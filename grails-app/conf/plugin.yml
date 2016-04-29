@@ -1,0 +1,8 @@
+quercus:
+    initParameters:
+        ini-file: /WEB-INF/php.ini
+    #loadOnStartup: 1
+    mappings:
+     - '*.php'
+     - '*.php3'
+
