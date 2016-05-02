@@ -1,0 +1,8 @@
+h4. Usage
+
+The plugin register the @QuercusServlet@ to process PHP files.
+
+You have to put your PHP files under @src/main/webapps@ for the Servlet to find them.
+
+The plugin does not (yet) provide any magic to allow the PHP scripts to use the Grails @dataSource@,
+so you will have to manage the database connection manually.
