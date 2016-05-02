@@ -11,5 +11,6 @@ before_script:
 script: ./travis-build.sh
 env:
   global:
-  - GIT_NAME="Hans Bogaards"
-  - GIT_EMAIL="hbogaards@gmail.com"
+  - GIT_NAME: "Hans Bogaards"
+  - GIT_EMAIL: "hbogaards@gmail.com"
+  - ENCRYPTION_LABEL: "73438d955b17"

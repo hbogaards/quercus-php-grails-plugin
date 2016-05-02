@@ -58,6 +58,16 @@ if [[ -n $TRAVIS_TAG ]] || [[ $TRAVIS_BRANCH == 'grails3' && $TRAVIS_PULL_REQUES
 
     fi
 
+    # Get the deploy key by using Travis's stored variables to decrypt deploy_key.enc
+    ENCRYPTED_KEY_VAR="encrypted_${ENCRYPTION_LABEL}_key"
+    ENCRYPTED_IV_VAR="encrypted_${ENCRYPTION_LABEL}_iv"
+    ENCRYPTED_KEY=${!ENCRYPTED_KEY_VAR}
+    ENCRYPTED_IV=${!ENCRYPTED_IV_VAR}
+    openssl aes-256-cbc -K $ENCRYPTED_KEY -iv $ENCRYPTED_IV -in deploy_key.enc -out deploy_key -d
+    chmod 600 deploy_key
+    eval `ssh-agent -s`
+    ssh-add deploy_key
+
     git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
     git push origin HEAD
     cd ..

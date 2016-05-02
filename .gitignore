@@ -18,3 +18,5 @@ target
 *.iml
 *.ipr 
 *.iws
+/deploy_key.pub
+/deploy_key
